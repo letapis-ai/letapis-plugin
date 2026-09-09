@@ -1,0 +1,16 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "letapis",
+  "description": "The letapis plugin: semantic search, call-graph lookup and episodic recall over a corpus you index yourself.",
+  "owner": {
+    "name": "letapis",
+    "url": "https://github.com/letapis-ai/letapis-core"
+  },
+  "plugins": [
+    {
+      "name": "letapis",
+      "source": "./",
+      "description": "Search an indexed corpus by meaning, trace who calls a symbol, recall what was decided before"
+    }
+  ]
+}

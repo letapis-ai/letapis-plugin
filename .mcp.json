@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "letapis": {
+      "command": "uv",
+      "args": ["run", "--project", "${CLAUDE_PLUGIN_ROOT}/letapis-mcp", "letapis-mcp"],
+      "env": {
+        "LETAPIS_SERVER_URL": "http://localhost:3131",
+        "LETAPIS_API_KEY": ""
+      }
+    }
+  }
+}

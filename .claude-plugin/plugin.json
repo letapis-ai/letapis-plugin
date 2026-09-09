@@ -1,0 +1,8 @@
+{
+  "name": "letapis",
+  "description": "Search an indexed codebase or document corpus by meaning, trace who calls a symbol, and recall what was decided before. Registers the MCP proxy that talks to a letapis engine, and ships the skill that says which tool answers which question.",
+  "version": "1.0.0",
+  "author": {
+    "name": "letapis"
+  }
+}
