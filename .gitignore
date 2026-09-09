@@ -1,3 +1,7 @@
-# Placed in before publishing; in a working checkout these are symlinks.
-/letapis-mcp
-/skills
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
