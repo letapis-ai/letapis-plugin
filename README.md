@@ -1,5 +1,7 @@
 # letapis
 
+![How letapis answers](assets/letapis-map.gif)
+
 An index over the code and documents you point it at, and four kinds of question it answers:
 
 - **What is there about this?** Search by meaning, not by string — the middleware and the doc
