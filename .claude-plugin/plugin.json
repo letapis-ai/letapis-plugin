@@ -1,6 +1,6 @@
 {
   "name": "letapis",
-  "description": "Search an indexed codebase or document corpus by meaning, trace who calls a symbol, and recall what was decided before. Registers the MCP proxy that talks to a letapis engine, and ships the skill that says which tool answers which question.",
+  "description": "Ask your codebase and notes by meaning, not by string. Who calls a symbol, with file and line. What was decided before, and what it led to. What is inside a book or an unfamiliar repo. Git worktrees are first-class: a branch checkout answers the one working in it. Needs a letapis engine.",
   "version": "1.0.0",
   "author": {
     "name": "letapis"

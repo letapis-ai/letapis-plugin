@@ -1,7 +1,7 @@
 {
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "letapis",
-  "description": "The letapis plugin: semantic search, call-graph lookup and episodic recall over a corpus you index yourself.",
+  "description": "Ask your codebase and notes by meaning, not by string. Who calls a symbol, with file and line. What was decided before, and what it led to. What is inside a book or an unfamiliar repo. Git worktrees are first-class: a branch checkout answers the one working in it. Needs a letapis engine.",
   "owner": {
     "name": "letapis",
     "url": "https://github.com/letapis-ai/letapis-core"
@@ -10,7 +10,7 @@
     {
       "name": "letapis",
       "source": "./",
-      "description": "Search an indexed corpus by meaning, trace who calls a symbol, recall what was decided before"
+      "description": "Meaning-first search over your code and notes, callers of a symbol, memory of what was decided, and a graph over long documents."
     }
   ]
 }
