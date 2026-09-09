@@ -5,6 +5,3 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
-
-# Ours: fills the plugin from the working trees before publishing.
-/scripts
