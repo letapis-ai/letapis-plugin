@@ -22,7 +22,7 @@ to it and searches nothing on its own.
 ## Installing
 
 ```
-/plugin marketplace add straga/letapis-plugin
+/plugin marketplace add letapis-ai/letapis-plugin
 /plugin install letapis@letapis
 ```
 
