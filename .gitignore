@@ -1,2 +1,3 @@
-letapis-mcp/
-skills/
+# Placed in before publishing; in a working checkout these are symlinks.
+/letapis-mcp
+/skills
