@@ -1,7 +1,7 @@
 {
   "name": "letapis",
   "description": "Ask your codebase and notes by meaning, not by string. Who calls a symbol, with file and line. What was decided before, and what it led to. What is inside a book or an unfamiliar repo. Git worktrees are first-class: a branch checkout answers the one working in it. Needs a letapis engine.",
-  "version": "26.911.1",
+  "version": "26.911.2",
   "author": {
     "name": "letapis"
   }
