@@ -367,8 +367,19 @@ is how a real one stops being read.
 
 An episode arrives with more than its text, and three of its fields are about the record rather
 than the subject: `t_valid` (the date it can be filtered by — **null means it cannot be**),
-`provenance` (observed, inferred, confirmed by a person) and `confidence`. Together they are why
-two episodes saying opposite things are not equally weighted.
+`provenance` (observed, inferred, confirmed by a person) and `confidence`. They say how far to
+trust the record once you have it; they do not decide where it stands in the list.
+
+Recall searches episodes by meaning and by words, and a cross-encoder orders what both found.
+Each episode carries two numbers, on two different scales:
+
+| Field | What it is | Read it as |
+|---|---|---|
+| `rerank_score` | the cross-encoder's judgement of this episode against your query, 0–1 | the order of the list and the confidence bar both come from it |
+| `similarity` | the cosine of the semantic half | **`null` means the episode was found by its words alone**, not that it scored zero |
+
+The two are not comparable, and a high `similarity` beside a low `rerank_score` is an episode
+that is near the subject without being about it.
 
 Two numbers head the response and belong to the **session**, not to the answer:
 
@@ -380,9 +391,17 @@ Two numbers head the response and belong to the **session**, not to the answer:
 Repeat a query verbatim and self-continuity reads 1.00; ask something unrelated and it falls.
 Neither number is a quality signal for the material you got back.
 
-**`memory_barrier` is the one that is.** It appears when nothing crossed the confidence bar —
-`no_match` when nothing was found at all, `uncertain` when only weak matches were. An answer that
-carries it is telling you its own contents are thin.
+**`memory_barrier` is the one that is.** It appears when nothing crossed the confidence bar:
+
+| Value | What came back |
+|---|---|
+| absent | at least one confident match |
+| `uncertain` | only weak matches — worth reading, not worth resting a claim on |
+| `no_match` | nothing about the subject; the list is empty rather than padded with neighbours |
+| `not_measured` | the reranker did not answer: episodes are there in the order the two searches merged them, and nobody judged how close they are. Trust is left as it was |
+
+An answer carrying `uncertain` or `no_match` is telling you its own contents are thin;
+`not_measured` is telling you the judge was away, which is a different thing.
 
 ## What a folder listing tells you beyond paths
 
@@ -398,6 +417,15 @@ rewrites it from what the store actually holds, so a number that dropped between
 usually a repair rather than a loss. Read it as an order of magnitude, not as a contract: what a
 folder holds on disk, what its patterns admit, and what the engine could parse are three different
 counts, and only the last one is in here.
+
+**`index_reasons` says why the last pass cut what it cut.** It is a count per word of the verdict
+the scan reached about each file: `new`, `size_changed`, `hash_changed`, `no_embeddings`,
+`handler_changed`, `handler_version_changed`, `changed_while_read`, `read_error`, `stat_error`, and
+`batch_error` for a batch the store failed to answer. It sits in the whole record of a folder
+(`list_folders` with `folder`, or `full=true`) and in `result.index_reasons` of an indexing pass in
+`get_operation`. A folder you did not touch that keeps coming back with `hash_changed` is being
+rewritten by something on disk; one that comes back with `no_embeddings` is waiting on the
+embedder; a pass with an empty `index_reasons` cut nothing, because every file was already in.
 
 **`description` and group tags are free text, and free text outlives its meaning.** A folder
 described as one thing and tagged as another will answer confidently from material that is neither.
